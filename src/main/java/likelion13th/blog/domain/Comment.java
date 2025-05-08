@@ -19,33 +19,16 @@ public class Comment {
         this.article = article;
     }
 
-    public Article getArticle() {
-        return article;
-    }
+    public Article getArticle() {return article;}
 
-    public String getAuthor() {
-        return author;
-    }
+    public String getAuthor() {return author;}
 
-    public String getContent() {
-        return content;
-    }
+    public String getContent() {return content;}
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    public LocalDateTime getCreatedAt() {return createdAt;}
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
-    public String getPassword() {
-        return password;
-    }
-
-
-
-
-
+    public String getPassword() { return password;}
 
 }
