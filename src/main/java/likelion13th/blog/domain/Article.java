@@ -73,6 +73,9 @@ public class Article {
     @Column(nullable = false)
     private String author;
 
+    @Column(nullable = false)
+    private int commentCount;
+
     public Article(String title, String content, String author,  String password) {
         this.title = title;
         this.content = content;
@@ -85,4 +88,12 @@ public class Article {
         this.title=title;
         this.content=content;
     }
+
+    public void increaseCommentCount() {
+        commentCount++;
+    }
+    public void decreaseCommentCount() {
+        if(commentCount>0) commentCount--;
+    }
+
 }
