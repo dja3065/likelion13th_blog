@@ -81,11 +81,12 @@ public class ArticleController {
 
     /*게시글 단일 조회*/
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> ReadArticle(@PathVariable long id){
-        ArticleResponse response=articleService.getArticle(id);
+    public ResponseEntity<ApiResponse> readArticle(@PathVariable long id){
+        ArticleDetailResponse response=articleService.getArticle(id);
         return ResponseEntity.ok(new ApiResponse(true,200,"게시글 조회 성공", response));
 
     }
+
     /*게시글 수정*/
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse> updateArticle(@PathVariable long id,
@@ -103,4 +104,6 @@ public class ArticleController {
         return ResponseEntity.ok(new ApiResponse(true,204,"게시글 삭제 성공"));
 
     }
+
+
 }
