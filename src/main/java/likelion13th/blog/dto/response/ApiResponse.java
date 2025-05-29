@@ -1,11 +1,11 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.response;
 
 import lombok.*;
 
 @Getter
 @Builder
 @AllArgsConstructor
-public class ApiResponse <T> {
+public class ApiResponse<T> {
     private boolean success;
     private int code;
     private String message;

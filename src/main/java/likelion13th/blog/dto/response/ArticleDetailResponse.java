@@ -1,4 +1,4 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.response;
 
 
 import likelion13th.blog.domain.Article;
@@ -7,8 +7,8 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter @Builder
-@AllArgsConstructor
+@Getter
+@Builder @AllArgsConstructor
 public class ArticleDetailResponse {
     private final Long id;
     private final String title;

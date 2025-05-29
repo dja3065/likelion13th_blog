@@ -1,4 +1,4 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +23,7 @@ public class AddArticleRequest {
                 .author(author)
                 .password(password)
                 .createdAt(LocalDateTime.now())
+                .commentCount(0)
                 .build();
     }
 }

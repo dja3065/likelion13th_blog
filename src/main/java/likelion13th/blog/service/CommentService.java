@@ -3,9 +3,9 @@ package likelion13th.blog.service;
 import jakarta.persistence.EntityNotFoundException;
 import likelion13th.blog.domain.Article;
 import likelion13th.blog.domain.Comment;
-import likelion13th.blog.dto.AddCommentRequest;
-import likelion13th.blog.dto.CommentResponse;
-import likelion13th.blog.dto.DeleteRequest;
+import likelion13th.blog.dto.request.AddCommentRequest;
+import likelion13th.blog.dto.response.CommentResponse;
+import likelion13th.blog.dto.request.DeleteRequest;
 import likelion13th.blog.repository.ArticleRepository;
 import likelion13th.blog.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +19,9 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
 
-
     /*댓글 작성*/
     @Transactional
     public CommentResponse addComment(long articleId, AddCommentRequest request) {
-
         /* 1. 요청이 들어온 게시글 ID로 데이터베이스에서 게시글 찾기. 해당하는 게시글이 없으면 에러*/
         Article article=articleRepository.findById(articleId)
                 .orElseThrow(()->new EntityNotFoundException("해당 ID의 게시글을 찾을 수 없습니다."));
@@ -37,9 +35,12 @@ public class CommentService {
 
         /* 4. 방금 생성한 댓글을 DTO로 변환하여 반환 */
         return CommentResponse.of(comment);
+
     }
 
+
     /*댓글 삭제*/
+    @Transactional
     public void deleteComment(long commentId, DeleteRequest request) {
         /* 1. 요청이 들어온 게시글 ID로 데이터베이스에서 댓글 찾기. 해당하는 댓글이 없으면 에러 */
         Comment comment=commentRepository.findById(commentId)
@@ -52,9 +53,14 @@ public class CommentService {
         if(!request.getPassword().equals(comment.getPassword())){
             throw new RuntimeException("해당 댓글에 대한 삭제 권한이 없습니다.");
         }
+
+
         /* 3. 댓글 삭제 */
         commentRepository.deleteById(commentId);
+
         /* 4. 게시글의 commentCount -1 */
         comment.getArticle().decreaseCommentCount();
     }
+
 }
+

@@ -1,15 +1,15 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.response;
 
 import lombok.*;
 import likelion13th.blog.domain.Article;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor @Builder
 @Getter
-@Builder @AllArgsConstructor
 public class ArticleResponse {
     private final Long id;
     private final String title;
-    private final String content;
+    private final String content; // <--- 이 필드 추가
     private final String author;
     private final LocalDateTime createdAt;
 

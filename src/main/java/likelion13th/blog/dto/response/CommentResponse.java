@@ -1,4 +1,4 @@
-package likelion13th.blog.dto;
+package likelion13th.blog.dto.response;
 
 import likelion13th.blog.domain.Comment;
 import lombok.AllArgsConstructor;
@@ -8,15 +8,13 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-@Builder
-@AllArgsConstructor
+@Builder @AllArgsConstructor
 public class CommentResponse {
     private final Long id;
     private final Long articleId;
     private final String content;
     private final String author;
     private final LocalDateTime createdAt;
-
 
     public static CommentResponse of(Comment comment){
         return CommentResponse.builder()
@@ -29,3 +27,4 @@ public class CommentResponse {
 
     }
 }
+
